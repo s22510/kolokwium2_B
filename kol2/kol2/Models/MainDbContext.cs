@@ -49,7 +49,8 @@ namespace zad8.Models
 
                 p.HasData(
                     new Musician { IdMusician = 1, FirstName = "Jan", LastName = "1", Nickname = "nick1" },
-                    new Musician { IdMusician = 2, FirstName = "Jan", LastName = "2", Nickname = "nick2" }
+                    new Musician { IdMusician = 2, FirstName = "Jan", LastName = "2", Nickname = "nick2" },
+                    new Musician { IdMusician = 3, FirstName = "Jan", LastName = "3", Nickname = "nick2" }
                 );
             });
             modelBuilder.Entity<Musician_Track>(p =>
@@ -62,7 +63,8 @@ namespace zad8.Models
 
                 p.HasData(
                     new Musician_Track { idMusician = 1, idTrack = 1},
-                    new Musician_Track { idMusician = 2, idTrack = 2}
+                    new Musician_Track { idMusician = 2, idTrack = 2},
+                    new Musician_Track { idMusician = 3, idTrack = 3 }
                 );
 
             });
@@ -87,7 +89,8 @@ namespace zad8.Models
 
                 p.HasData(
                     new Track { IdTrack = 1, TrackName = "Jan", Duration = 5.44F, IdMusicAlbum = 1 },
-                    new Track { IdTrack = 2, TrackName = "Jan", Duration = 2.88F, IdMusicAlbum = 2 }
+                    new Track { IdTrack = 2, TrackName = "Jan", Duration = 2.88F, IdMusicAlbum = 2 },
+                    new Track { IdTrack = 3, TrackName = "Jan", Duration = 2.88F, IdMusicAlbum = null}
                 );
             });
         }

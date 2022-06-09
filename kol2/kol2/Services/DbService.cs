@@ -39,6 +39,24 @@ namespace kol2.Services
             entry.State = EntityState.Deleted;
         }
 
+        public async void DeleteMusicianTracks(int idMusician)
+        {
+            var tracks = await _DbContext.Musician_Tracks.Select(a => new SomeMusician_Track
+            {
+                Musician = new SomeMusician { IdMusician = a.Musician.IdMusician, FirstName = a.Musician.FirstName, LastName = a.Musician.LastName, Nickname = a.Musician.Nickname },
+                Track = new SomeTrack { IdTrack = a.Track.IdTrack, TrackName = a.Track.TrackName, Duration = a.Track.Duration, IdMusicAlbum = a.Track.IdMusicAlbum }
+            }).ToArrayAsync();
+
+            foreach(var t in tracks.Select(a=>a.Track)){
+                var track = new Track
+                {
+                    IdTrack = t.IdTrack
+                };
+                var entry = _DbContext.Entry(track);
+                entry.State = EntityState.Deleted;
+            }
+        }
+
         public async Task<IEnumerable<object>> GetMusician(int idMusician)
         {
             var musician = await _DbContext.Musician_Tracks.Select(a=> new SomeMusician_Track

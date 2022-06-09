@@ -11,5 +11,6 @@ namespace kol2.Services
         Task SaveChanges();
         void DeleteMusician(int idMusician);
         Task<bool> checkAlbumArtist(int idMusician);
+        void DeleteMusicianTracks(int idMusician);
     }
 }

@@ -32,6 +32,8 @@ namespace kol2.Controllers
         public async Task<IActionResult> DeleteMusicianAsync(int idMusician)
         {
             if (await _dbService.checkAlbumArtist(idMusician)) return NotFound("Muzyk jest na albumie, nie mozna usunac");
+            _dbService.DeleteMusicianTracks(idMusician);
+            await _dbService.SaveChanges();
             _dbService.DeleteMusician(idMusician);
             await _dbService.SaveChanges();
             return Ok();
